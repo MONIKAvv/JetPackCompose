@@ -1,0 +1,43 @@
+Composition
+Recomposition
+
+Feature of jetpack
+
+only kotlin
+less code and more power
+live preview no build
+Build-in animation
+interoperability
+theming system-> one theme in all app screen
+
+###Recomposition -> ui ke ussi part ko update karna jo change kiye ho, rest it won't touch any other composiable
+just like the things works in components in react
+
+###state -> it is a data that control app's ui
+
+
+
+color = Color.Green -> compose graphics ui ->prebuilt color by
+or we can also use color = color.resource somthing like this  -> custom color
+
+#*** we can use Column layout -> vertically show the elements
+#*** we can use Row layout -> Horizontal show the elements
+#*** we can use Box layout -> Horizontal show the elements
+
+##***** Space(modifier.) to give space between components
+
+modifier k function agar multiple times use karna chah rhe to . se kar sakte hai like -> Modifier.background.fillMaxHeight
+or agar modifier se bahar aana hai then , use karte hai
+
+******* 8background -> color, shape
+* LazyColumn -> work as recyclerView -> takes two values ui and items
+* responsive and adaptive layout -> adjust in all types of screen -> height and width fix(hard code) n rakhe
+
+*******************************************************************
+    state Management -> app's brain (color etc) , how app will react on user's action
+                        by remember{} -> yaad karke rakhta hai
+                        mutuableStateOf -> pakad hold (najar rakhta hai) kr rakhta hai ui ko
+                        remembersavable -> rotate me data delete ho jata hai, to ye hone se avoid karta hai
+
+                        Reading and updating state -> CheckBox -> checked, onCheckedChange
+                        State Hosting -> it centralize state -> state passing through another pta nhi bhai
