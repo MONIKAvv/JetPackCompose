@@ -41,3 +41,14 @@ or agar modifier se bahar aana hai then , use karte hai
 
                         Reading and updating state -> CheckBox -> checked, onCheckedChange
                         State Hosting -> it centralize state -> state passing through another pta nhi bhai
+
+
+***************************************************
+
+WEIGHT -> this helps in building the application responsive , takes values in fraction (not fix height)
+
+Brush-> it helps in making gradients color
+
+
+use of Modifier is a class blueprint and modifier is its object jo ki fun ke baad hi use krte hai
+and after this we create new Modifier for each components
