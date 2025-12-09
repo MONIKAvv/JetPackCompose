@@ -55,8 +55,13 @@ fun SignUpScreen() {
         Icon(
             imageVector = Icons.Default.ArrowBack,
             contentDescription = "Person Icon",
-            modifier = Modifier.size(40.dp)
-                .background(Color.LightGray, shape = CircleShape)
+            modifier = Modifier
+                .size(40.dp)
+                .background(
+                    Color.LightGray
+                        .copy(alpha = 0.2f),
+                    shape = CircleShape
+                )
                 .padding(4.dp),
             tint = Color.Black
         )
@@ -134,7 +139,8 @@ fun SignUpScreen() {
 
         Button(
             onClick = {},
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
                 .height(50.dp)
         ) {
             Text("Sign Up")
