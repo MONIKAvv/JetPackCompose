@@ -186,6 +186,7 @@ fun MyProfile(modifier: Modifier = Modifier) {
                         Text("Projects")
 
                     }
+//                    verticleDivider/horizontalDivider bhi use kr sakte hai
                     Divider(
                         thickness = 1.dp,
                         color = Color.LightGray,
