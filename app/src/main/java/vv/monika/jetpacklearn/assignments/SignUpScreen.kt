@@ -23,15 +23,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.layout.ModifierLocalBeyondBoundsLayout
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import vv.monika.jetpacklearn.R
 
 @Composable
 @Preview(showBackground = true, showSystemUi = true)

@@ -1,6 +1,5 @@
 package vv.monika.jetpacklearn
 
-import android.graphics.Color
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
