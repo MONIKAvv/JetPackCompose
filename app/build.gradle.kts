@@ -2,6 +2,9 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+
+//    need to add something here to reduce app crash
+
 }
 
 android {
@@ -62,8 +65,9 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
 //for navigating from one screen to another
-    implementation("androidx.navigation:navigation-compose:2.8.0-beta05")
-    implementation("androidx.compose.material:material-icons-core")
-    implementation("androidx.compose.material:material-icons-extended")
+implementation("androidx.navigation:navigation-compose:2.9.6")
+
+//    for serialization
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
 
 }

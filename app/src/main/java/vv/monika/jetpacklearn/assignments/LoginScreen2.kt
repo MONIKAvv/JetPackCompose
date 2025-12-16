@@ -1,5 +1,6 @@
 package vv.monika.jetpacklearn.assignments
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -11,14 +12,19 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.CheckboxColors
+import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -34,15 +40,22 @@ import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.ModifierLocalBeyondBoundsLayout
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.LinkAnnotation
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import perfetto.protos.AndroidAutoMultiuserMetric
 import vv.monika.jetpacklearn.R
 import vv.monika.jetpacklearn.ui.theme.DarkGreen
 import kotlin.math.min
@@ -54,6 +67,7 @@ fun LoginScreenEco(modifier: Modifier = Modifier) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
+    var isChecked by remember { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
@@ -98,7 +112,7 @@ fun LoginScreenEco(modifier: Modifier = Modifier) {
                 .fillMaxWidth()
                 .drawBehind {
                     val cornerGap = 5.dp.toPx()
-                    val strokeWidth = 1.dp.toPx()
+                    val strokeWidth = 2.dp.toPx()
 
                     // Top line
                     drawLine(
@@ -142,10 +156,10 @@ fun LoginScreenEco(modifier: Modifier = Modifier) {
                 )
             },
             colors = TextFieldDefaults.colors(
-                unfocusedContainerColor = DarkGreen.copy(alpha = 0.1f),
+                unfocusedContainerColor = Color.White,
                 focusedContainerColor = DarkGreen.copy(alpha = 0.1f),
-                unfocusedIndicatorColor = DarkGreen,
-                focusedIndicatorColor = DarkGreen,
+                unfocusedIndicatorColor = Color.Transparent,
+                focusedIndicatorColor = Color.Transparent,
                 focusedLabelColor = DarkGreen,
                 unfocusedLabelColor = DarkGreen,
                 focusedTextColor = DarkGreen,
@@ -164,8 +178,8 @@ fun LoginScreenEco(modifier: Modifier = Modifier) {
             fontWeight = FontWeight.Bold
         )
         TextField(
-            value = email,
-            onValueChange = { email = it },
+            value = password,
+            onValueChange = { password = it },
             singleLine = true,
             trailingIcon = {
                 IconButton(
@@ -230,10 +244,10 @@ fun LoginScreenEco(modifier: Modifier = Modifier) {
                 )
             },
             colors = TextFieldDefaults.colors(
-                unfocusedContainerColor = DarkGreen.copy(alpha = 0.1f),
+                unfocusedContainerColor = Color.White,
                 focusedContainerColor = DarkGreen.copy(alpha = 0.1f),
-                unfocusedIndicatorColor = DarkGreen,
-                focusedIndicatorColor = DarkGreen,
+                unfocusedIndicatorColor = Color.Transparent,
+                focusedIndicatorColor = Color.Transparent,
                 focusedLabelColor = DarkGreen,
                 unfocusedLabelColor = DarkGreen,
                 focusedTextColor = DarkGreen,
@@ -250,8 +264,8 @@ fun LoginScreenEco(modifier: Modifier = Modifier) {
             fontWeight = FontWeight.Bold
         )
         TextField(
-            value = email,
-            onValueChange = { email = it },
+            value = confirmPassword,
+            onValueChange = { confirmPassword = it },
             singleLine = true,
             trailingIcon = {
                 IconButton(
@@ -316,10 +330,10 @@ fun LoginScreenEco(modifier: Modifier = Modifier) {
                 )
             },
             colors = TextFieldDefaults.colors(
-                unfocusedContainerColor = DarkGreen.copy(alpha = 0.1f),
+                unfocusedContainerColor = Color.White,
                 focusedContainerColor = DarkGreen.copy(alpha = 0.1f),
-                unfocusedIndicatorColor = DarkGreen,
-                focusedIndicatorColor = DarkGreen,
+                unfocusedIndicatorColor = Color.Transparent,
+                focusedIndicatorColor = Color.Transparent,
                 focusedLabelColor = DarkGreen,
                 unfocusedLabelColor = DarkGreen,
                 focusedTextColor = DarkGreen,
@@ -327,8 +341,83 @@ fun LoginScreenEco(modifier: Modifier = Modifier) {
             )
         )
 
+        Spacer(modifier = Modifier.height(30.dp))
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Checkbox(
+                checked = isChecked,
+                colors = CheckboxDefaults.colors(
+                    checkedColor = DarkGreen,
+                    uncheckedColor = DarkGreen,
+                    checkmarkColor = Color.White,
+                    disabledCheckedColor = DarkGreen.copy(alpha = 0.6f),
+                    disabledUncheckedColor = DarkGreen.copy(alpha = 0.6f),
+                    disabledIndeterminateColor = DarkGreen.copy(alpha = 0.6f)
 
+                ),
+                onCheckedChange = {
+                    isChecked = it
 
+                }
+            )
+            val annotedString = buildAnnotatedString {
+                withStyle(
+                    style = SpanStyle(
+                        color = Color.Gray,
+                        fontSize = 12.sp
+                    )
+                ) {
+                    append("I've read and agreed to ")
+                }
+                pushStringAnnotation("read", "read")
+                withStyle(
+                    style = SpanStyle(
+                        color = DarkGreen,
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                ) {
+                    append("User Agreement")
+                }
+                pushStringAnnotation("user_agreement", "user_agreement")
+                withStyle(
+                    style = SpanStyle(
+                        color = Color.Gray,
+                        fontSize = 12.sp,
+                    )
+                ) {
+                    append(" and \n\n")
+                }
+                pushStringAnnotation("privacy_policy", "privacy_policy")
+                withStyle(
+                    style = SpanStyle(
+                        color = DarkGreen,
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                ) {
+                    append("Privacy Policy")
+
+                }
+            }
+            ClickableText(
+                annotedString,
+                onClick = { offset ->
+                    annotedString.getStringAnnotations("read", start = offset, end = offset)
+                    annotedString.getStringAnnotations("user_agreement", start = offset, end = offset)
+                    annotedString.getStringAnnotations("privacy_policy", start = offset, end = offset)
+                        .firstOrNull()?.let {
+//                            Toast.makeText(context, "Clicked on ${it.item}", Toast.LENGTH_SHORT).show()
+                        }
+                },
+                style = TextStyle(textAlign = TextAlign.Center),
+                modifier = Modifier.padding(top = 10.dp)
+            )
+
+        }
+        Spacer(modifier = Modifier.height(30.dp))
         Button(
             onClick = {},
             modifier = Modifier
@@ -344,7 +433,7 @@ fun LoginScreenEco(modifier: Modifier = Modifier) {
         ) {
             Text("Sign Up")
         }
-
+        Spacer(modifier = Modifier.height(10.dp))
         Text("Other way to sign in", color = Color.Gray)
 
         Row() {
@@ -373,8 +462,10 @@ fun LoginScreenEco(modifier: Modifier = Modifier) {
                 "Already have an account?",
                 color = Color.Gray
             )
-            Text(" Back to sign in", color = DarkGreen,
-                fontWeight = FontWeight.Bold)
+            Text(
+                " Back to sign in", color = DarkGreen,
+                fontWeight = FontWeight.Bold
+            )
 
         }
     }
