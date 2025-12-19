@@ -1,4 +1,4 @@
-package vv.monika.jetpacklearn.screens.navigation
+package vv.monika.jetpacklearn.screens.navigation.simpleNavigation
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,13 +13,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 
-@Preview(showBackground = true, showSystemUi = true)
+//@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun ProfileSCreen () {
+fun ProfileScreen(navController: NavHostController) {
 
         Column(
             modifier = Modifier.fillMaxSize(),
@@ -32,7 +32,7 @@ fun ProfileSCreen () {
 
             Spacer(modifier = Modifier.height(30.dp))
             Button(
-                onClick = {},
+                onClick = { navController.navigate(Routes.Home) },
                 modifier = Modifier.fillMaxWidth()
                     .padding(horizontal = 16.dp)
             ) {

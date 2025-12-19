@@ -12,7 +12,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.ClickableText
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -33,9 +36,6 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.material3.Icon
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 
 
 
@@ -56,7 +56,7 @@ fun LogInScreen() {
         Spacer(modifier = Modifier.height(30.dp))
 
         Icon(
-            imageVector = Icons.Filled.ArrowBack,
+            imageVector = Icons.Default.ArrowBack,
             contentDescription = "Back Icon",
             modifier = Modifier
                 .size(40.dp)
@@ -128,20 +128,6 @@ fun LogInScreen() {
             textAlign = TextAlign.End
         )
         Spacer(modifier = Modifier.height(40.dp))
-
-//            Text(
-//                "By connecting your account confirm that you agree \n with our Term and Condition",
-//                textAlign = TextAlign.Center,
-//                fontSize = 12.sp,
-//                color = Color.Gray,
-//                modifier = Modifier.fillMaxWidth()
-//                    .clickable( interactionSource = "Terms and Conditions",
-//                        fontColor = Color.black,
-//                        indication = null,
-//                        onClick = {})
-//
-//
-//            )
 
         val annotedString = buildAnnotatedString {
             withStyle(

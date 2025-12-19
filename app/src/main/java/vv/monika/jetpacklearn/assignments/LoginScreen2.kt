@@ -55,14 +55,18 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import perfetto.protos.AndroidAutoMultiuserMetric
 import vv.monika.jetpacklearn.R
+import vv.monika.jetpacklearn.assignments.viewModel.LoginData
 import vv.monika.jetpacklearn.ui.theme.DarkGreen
 import kotlin.math.min
 
 @Composable
-@Preview(showBackground = true, showSystemUi = true)
-fun LoginScreenEco(modifier: Modifier = Modifier) {
+//
+fun LoginScreenEco(
+    viewModel: LoginData
+) {
 
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -105,8 +109,8 @@ fun LoginScreenEco(modifier: Modifier = Modifier) {
             fontWeight = FontWeight.Bold
         )
         TextField(
-            value = email,
-            onValueChange = { email = it },
+            value = viewModel.email,
+            onValueChange = { viewModel.email = it },
             singleLine = true,
             modifier = Modifier
                 .fillMaxWidth()
@@ -178,8 +182,8 @@ fun LoginScreenEco(modifier: Modifier = Modifier) {
             fontWeight = FontWeight.Bold
         )
         TextField(
-            value = password,
-            onValueChange = { password = it },
+            value = viewModel.passWord,
+            onValueChange = { viewModel.passWord = it },
             singleLine = true,
             trailingIcon = {
                 IconButton(
@@ -264,8 +268,8 @@ fun LoginScreenEco(modifier: Modifier = Modifier) {
             fontWeight = FontWeight.Bold
         )
         TextField(
-            value = confirmPassword,
-            onValueChange = { confirmPassword = it },
+            value = viewModel.confirmPassword,
+            onValueChange = { viewModel.confirmPassword = it },
             singleLine = true,
             trailingIcon = {
                 IconButton(
@@ -347,7 +351,7 @@ fun LoginScreenEco(modifier: Modifier = Modifier) {
             horizontalArrangement = Arrangement.Center
         ) {
             Checkbox(
-                checked = isChecked,
+                checked = viewModel.isChecked,
                 colors = CheckboxDefaults.colors(
                     checkedColor = DarkGreen,
                     uncheckedColor = DarkGreen,
@@ -406,8 +410,16 @@ fun LoginScreenEco(modifier: Modifier = Modifier) {
                 annotedString,
                 onClick = { offset ->
                     annotedString.getStringAnnotations("read", start = offset, end = offset)
-                    annotedString.getStringAnnotations("user_agreement", start = offset, end = offset)
-                    annotedString.getStringAnnotations("privacy_policy", start = offset, end = offset)
+                    annotedString.getStringAnnotations(
+                        "user_agreement",
+                        start = offset,
+                        end = offset
+                    )
+                    annotedString.getStringAnnotations(
+                        "privacy_policy",
+                        start = offset,
+                        end = offset
+                    )
                         .firstOrNull()?.let {
 //                            Toast.makeText(context, "Clicked on ${it.item}", Toast.LENGTH_SHORT).show()
                         }
@@ -494,4 +506,11 @@ class CutCornerShape(private val cut: Dp) : Shape {
         }
         return Outline.Generic(path)
     }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+private fun LoginScreenPreview() {
+    LoginScreenEco(viewModel = LoginData())
+
 }

@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 
 //    need to add something here to reduce app crash
+//    id("org.jetbrains.kotlin.plugin.serialization") version "2.2.0"
 
 }
 
@@ -63,11 +64,16 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+//for icons
+    implementation("androidx.compose.material:material-icons-extended-android:1.6.8") // Or the latest version
+
 
 //for navigating from one screen to another
-implementation("androidx.navigation:navigation-compose:2.9.6")
+    implementation("androidx.navigation:navigation-compose:2.9.6")
 
-//    for serialization
+//    for serialization --> typesafe navigation
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
+
+    implementation("androidx.constraintlayout:constraintlayout-compose:1.1.1")
 
 }
