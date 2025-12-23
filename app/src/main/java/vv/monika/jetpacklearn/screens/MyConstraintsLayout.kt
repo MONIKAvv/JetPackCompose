@@ -22,6 +22,9 @@ fun MyConstraintsLayout() {
     ) {
 //        define references
         val (box1, box2, text) = createRefs()
+//        guideLine
+        val guideLine1 = createGuidelineFromStart(0.5f)
+
 
         Box(
             modifier = Modifier
@@ -51,6 +54,7 @@ fun MyConstraintsLayout() {
                 .constrainAs(ref = text){
                     bottom.linkTo(parent.bottom, )
                 }
+
         )
     }
 
