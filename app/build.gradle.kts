@@ -74,6 +74,7 @@ dependencies {
 //    for serialization --> typesafe navigation
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
 
+//    for constraint layout
     implementation("androidx.constraintlayout:constraintlayout-compose:1.1.1")
 
 }
