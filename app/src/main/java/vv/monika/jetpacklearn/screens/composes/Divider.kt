@@ -1,4 +1,4 @@
-package vv.monika.jetpacklearn.screens
+package vv.monika.jetpacklearn.screens.composes
 
 
 import androidx.compose.runtime.Composable

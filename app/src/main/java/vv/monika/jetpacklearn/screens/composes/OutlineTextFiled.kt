@@ -1,4 +1,4 @@
-package vv.monika.jetpacklearn.screens
+package vv.monika.jetpacklearn.screens.composes
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

@@ -5,11 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
-import androidx.navigation.NavHost
-import vv.monika.jetpacklearn.assignments.assnNavigation.FirstScreen
-import vv.monika.jetpacklearn.assignments.assnNavigation.NavGraph
+import vv.monika.jetpacklearn.advanceJetpack.CounterApp
 import vv.monika.jetpacklearn.presentation.CounterViewModel
-import vv.monika.jetpacklearn.screens.MyAlterDialog
 import vv.monika.jetpacklearn.ui.theme.JetpackLearnTheme
 
 class MainActivity : ComponentActivity() {

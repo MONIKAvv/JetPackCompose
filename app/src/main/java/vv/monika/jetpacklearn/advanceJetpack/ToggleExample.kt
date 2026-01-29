@@ -1,4 +1,4 @@
-package vv.monika.jetpacklearn
+package vv.monika.jetpacklearn.advanceJetpack
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

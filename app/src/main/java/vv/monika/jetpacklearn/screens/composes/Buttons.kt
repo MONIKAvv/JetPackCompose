@@ -1,4 +1,4 @@
-package vv.monika.jetpacklearn.screens
+package vv.monika.jetpacklearn.screens.composes
 
 import android.widget.Toast
 import androidx.compose.foundation.BorderStroke

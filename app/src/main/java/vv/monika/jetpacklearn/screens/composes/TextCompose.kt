@@ -1,4 +1,4 @@
-package vv.monika.jetpacklearn.screens
+package vv.monika.jetpacklearn.screens.composes
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement

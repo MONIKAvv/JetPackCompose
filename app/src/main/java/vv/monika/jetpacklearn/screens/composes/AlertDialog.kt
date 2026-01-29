@@ -1,6 +1,5 @@
-package vv.monika.jetpacklearn.screens
+package vv.monika.jetpacklearn.screens.composes
 
-import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -22,7 +21,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -30,10 +28,9 @@ import androidx.compose.ui.unit.sp
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun MyToast() {
+fun MyAlterDialog() {
 
     var showDialog by remember { mutableStateOf(false) }
-    val context = LocalContext.current
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -77,15 +74,7 @@ fun MyToast() {
                 title = { Text("Delete Item") },
                 text = { Text("Are you sure, you want to delete this item?") },
                 confirmButton = {
-                    TextButton(onClick = {
-//                        snakebar???
-                        Toast.makeText(
-                            context,
-                            "You Item has been deleted successfully",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        showDialog = false
-                    }
+                    TextButton(onClick = { showDialog = false }
                     )
                     { Text("Delete") }
                 },
